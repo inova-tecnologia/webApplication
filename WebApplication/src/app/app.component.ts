@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-declare let paypal: any;
+declare let paypal: any;   
 
 @Component({
   selector: 'app-root',
@@ -29,12 +29,12 @@ export class AppComponent implements OnInit {
     address1: "7050 Friendship Rd, Baltimore",
     stateOrProvince1: "Maryland",
     zipOrPostalCode1: "21240",
-    country1: "United States",
+    country1: "US",
 
     address2: "6722 Ritchie Hwy, Glen Burnie",
     stateOrProvince2: "Maryland",
     zipOrPostalCode2: "21061",
-    country2: "United States"
+    country2: "US"
   }
 
   constructor(private http: HttpClient) { }
@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
            paypal.Buttons({
             createOrder: (data: any, actions: any) => {
               this.orderId = actions.order.create.fireAndForget.__id__;
-              console.log(this.orderId);
                 return actions.order.create({
                   purchase_units: [{
                     amount: {
@@ -133,7 +132,7 @@ export class AppComponent implements OnInit {
       scriptTagElement.onload = resolve;
       document.body.appendChild(scriptTagElement);
     });
-  }
+  }  
 
   private getAccessToken(): void {
     const clientId = ''; //YOUR_CLIENT_ID
@@ -149,7 +148,7 @@ export class AppComponent implements OnInit {
         this.generatedToken = response.access_token;
       },
       (error: any) => {
-        console.error(error); 
+        console.log(error); 
       }
     );
   }
