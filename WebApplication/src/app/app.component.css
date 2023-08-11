@@ -1,0 +1,72 @@
+.divider {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.offer {
+    padding-top: 50px;
+}
+
+#img1 {
+    width: 600PX;
+    height: 400PX;
+}
+
+#item {
+    margin-bottom: 25px;
+}
+
+#personalTitle {
+    margin-top: 70px;
+}
+
+.form {
+    margin-top: 5px
+}
+
+#email {
+    margin-left: 28px;
+}
+
+#phone {
+    margin-right: 25px;
+}
+
+#address1 {
+    margin-top: 20px;
+    margin-right: 25px;
+}
+
+#state1 {
+    margin-right: 26px;
+}
+
+#zip1 {
+    margin-right: 34px;
+}
+
+#country1 {
+    margin-left: 15px;
+}
+
+#address2 {
+    margin-top: 20px;
+    margin-right: 25px;
+}
+
+#state2 {
+    margin-right: 26px;
+}
+
+#zip2 {
+    margin-right: 34px;
+}
+  
+#country2 {
+    margin-left: 15px;
+}
+
+#submitButton {
+    margin-top: 20px;
+    padding: 5px;
+}
