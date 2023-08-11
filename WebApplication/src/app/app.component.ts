@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'WebApplication';
+  product1 = "/assets/iphone14.png";
 }
