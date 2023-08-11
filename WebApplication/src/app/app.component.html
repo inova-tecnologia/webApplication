@@ -1,8 +1,58 @@
-<div class="content">
-    <h1>Welcome to Our Website</h1>
-    <p>This is a centered and responsive layout.</p>
-    <img [src]="product1">
-</div>   
+<script src="https://www.paypal.com/sdk/js?client-id=Abbwj0_qE_bLYBeG4J-JRmYTOtgylSE6hBkooy9_YYKcX-_iZGwxMzneWtbkouVx5W5iW9VwVEGVaGUz&components=buttons"></script>
 
+<div class="content">
+    <div class="header">
+        <h1>Welcome to our shopping cart, {{getBuyerData().firstName}}!</h1>
+        <p>Review your selected items</p>
+    </div>   
+    <div class="offer">
+        <hr class="divider"> 
+        <h2>{{getProductData().name}}</h2>
+        <p>Total cost ${{getProductData().price}}<p>
+        <img [src]="getProductData().img" id="img1">
+        <p id="item">Item number: {{getProductData().number}}<p>
+        <hr class="divider">
+    </div>
+        <h3 id="personalTitle">Personal details:</h3>
+        <form>
+            <label for="firstName">First name: </label>
+            <input type="text" id="firstName" class="form" name="firstName" required [(ngModel)]="getBuyerData().firstName"><br>
+         
+            <label for="lastName">Last name: </label>
+            <input type="text" id="lastName" class="form" name="lastName" required [(ngModel)]="getBuyerData().lastName"><br>
+        
+            <label for="email">Email: </label>
+            <input type="email" id="email" class="form" name="email" required [(ngModel)]="getBuyerData().email"><br>
+        
+            <label for="phone">Phone number: </label>
+            <input type="tel" id="phone" class="form" name="phone" required [(ngModel)]="getBuyerData().phoneNumb"><br>
+        
+            <label for="address1">Address line 1: </label>
+            <input type="text" id="address1" class="form" name="address1" required [(ngModel)]="getBuyerData().address1"><br>
+        
+            <label for="state">State/Province: </label>
+            <input type="text" id="state1" class="form" name="state" required [(ngModel)]="getBuyerData().stateOrProvince1"><br>
+        
+            <label for="zip">ZIP/Postal code: </label>
+            <input type="text" id="zip1" class="form" name="zip" required [(ngModel)]="getBuyerData().zipOrPostalCode1"><br>
+        
+            <label for="country">Country: </label>
+            <input type="text" id="country1" class="form" name="country" required [(ngModel)]="getBuyerData().country1"><br>
+        
+            <label for="address2">Address line 2: </label>
+            <input type="text" id="address2" class="form" name="address2" required [(ngModel)]="getBuyerData().address2"><br>
+        
+            <label for="state">State/Province: </label>
+            <input type="text" id="state2" class="form" name="state" required [(ngModel)]="getBuyerData().stateOrProvince2"><br>
+        
+            <label for="zip">ZIP/Postal code: </label>
+            <input type="text" id="zip2" class="form" name="zip" required [(ngModel)]="getBuyerData().zipOrPostalCode2"><br>
+        
+            <label for="country">Country: </label>
+            <input type="text" id="country2" class="form" name="country" required [(ngModel)]="getBuyerData().country2"><br>
+
+            <button type="submit" id="submitButton" (click)="submitForm()">Submit</button>
+       </form>
+</div>
 <router-outlet></router-outlet>
    
