@@ -1,5 +1,3 @@
-<script src="https://www.paypal.com/sdk/js?client-id=Abbwj0_qE_bLYBeG4J-JRmYTOtgylSE6hBkooy9_YYKcX-_iZGwxMzneWtbkouVx5W5iW9VwVEGVaGUz&components=buttons"></script>
-
 <div class="content">
     <div class="header">
         <h1>Welcome to our shopping cart, {{getBuyerData().firstName}}!</h1>
@@ -50,9 +48,9 @@
         
             <label for="country">Country: </label>
             <input type="text" id="country2" class="form" name="country" required [(ngModel)]="getBuyerData().country2"><br>
-
-            <button type="submit" id="submitButton" (click)="submitForm()">Submit</button>
+            
+            <div id="paypalButton" (click)="submitForm()"></div>
        </form>
-</div>
+</div> 
 <router-outlet></router-outlet>
    
