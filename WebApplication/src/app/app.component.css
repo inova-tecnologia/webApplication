@@ -32,37 +32,23 @@
     margin-right: 25px;
 }
 
-#address1 {
-    margin-top: 20px;
-    margin-right: 25px;
+#h3 {
+    margin-top: 25px;
 }
 
-#state1 {
+#address {   
+    margin-right: -15px;
+}
+ 
+#state {
     margin-right: 26px;
 }
 
-#zip1 {
+#zip {
     margin-right: 34px;
 }
 
-#country1 {
-    margin-left: 15px;
-}
-
-#address2 {
-    margin-top: 20px;
-    margin-right: 25px;
-}
-
-#state2 {
-    margin-right: 26px;
-}
-
-#zip2 {
-    margin-right: 34px;
-}
-  
-#country2 {
+#country {
     margin-left: 15px;
 }
 

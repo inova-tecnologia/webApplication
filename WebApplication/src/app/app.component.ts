@@ -3,6 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 declare let paypal: any;   
 
+interface Address {
+  address: string;
+  stateOrProvince: string;
+  zipOrPostalCode: string;
+  country: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +18,7 @@ declare let paypal: any;
 export class AppComponent implements OnInit {
 
   private paypalScript = false;
-  public title = 'WebApplication';
+  public  title = 'WebApplication';
   private orderId = "";
   private generatedToken = "";
   private product1 = {   
@@ -20,22 +27,33 @@ export class AppComponent implements OnInit {
     price: 899,    
     img: "/assets/iphone14.png"
   }
-  private buyer = {
+
+  buyer: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumb: string;
+    addresses: Address[];
+  } = {
     firstName: "Michael",
     lastName: "Williams",
     email: "michaelwilliams@gmail.com",
     phoneNumb: "+1 (267) 095-3252",
-
-    address1: "7050 Friendship Rd, Baltimore",
-    stateOrProvince1: "Maryland",
-    zipOrPostalCode1: "21240",
-    country1: "US",
-
-    address2: "6722 Ritchie Hwy, Glen Burnie",
-    stateOrProvince2: "Maryland",
-    zipOrPostalCode2: "21061",
-    country2: "US"
-  }
+    addresses: [
+      {
+        address: '7050 Friendship Rd, Baltimore',
+        stateOrProvince: 'Maryland',
+        zipOrPostalCode: '21240',
+        country: 'US',
+      },
+      {
+        address: '6722 Ritchie Hwy, Glen Burnie',
+        stateOrProvince: 'Maryland',
+        zipOrPostalCode: '21061',
+        country: 'US',
+      },
+    ],
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -63,10 +81,10 @@ export class AppComponent implements OnInit {
                         }
                       },
                       address: {
-                        address_line_1: this.buyer.address1,
-                        admin_area_2: this.buyer.stateOrProvince1,
-                        postal_code: this.buyer.zipOrPostalCode1,
-                        country_code: this.buyer.country1
+                        address_line_1: this.buyer.addresses[0].address,
+                        admin_area_2: this.buyer.addresses[0].stateOrProvince,
+                        postal_code: this.buyer.addresses[0].zipOrPostalCode,
+                        country_code: this.buyer.addresses[0].country
                       }
                     },
                     shipping: {
@@ -74,10 +92,10 @@ export class AppComponent implements OnInit {
                         full_name: this.buyer.firstName + " " + this.buyer.lastName
                       },
                       address: {
-                        address_line_1: this.buyer.address1,
-                        admin_area_2: this.buyer.stateOrProvince1,
-                        postal_code: this.buyer.zipOrPostalCode1,
-                        country_code: this.buyer.country1
+                        address_line_1: this.buyer.addresses[0].address,
+                        admin_area_2: this.buyer.addresses[0].stateOrProvince,
+                        postal_code: this.buyer.addresses[0].zipOrPostalCode,
+                        country_code: this.buyer.addresses[0].country
                       }
                     }
                   }]
@@ -104,23 +122,8 @@ export class AppComponent implements OnInit {
   getBuyerData(): any {
     return this.buyer;
   }
+  
 
-  submitForm(): void {
-    this.buyer.firstName = (<HTMLInputElement>document.getElementById("firstName")).value;
-    this.buyer.lastName = (<HTMLInputElement>document.getElementById("lastName")).value;
-    this.buyer.email = (<HTMLInputElement>document.getElementById("email")).value;
-    this.buyer.phoneNumb = (<HTMLInputElement>document.getElementById("phone")).value;
-  
-    this.buyer.address1 = (<HTMLInputElement>document.getElementById("address1")).value;
-    this.buyer.stateOrProvince1 = (<HTMLInputElement>document.getElementById("state1")).value;
-    this.buyer.zipOrPostalCode1 = (<HTMLInputElement>document.getElementById("zip1")).value;
-    this.buyer.country1 = (<HTMLInputElement>document.getElementById("country1")).value;
-  
-    this.buyer.address2 = (<HTMLInputElement>document.getElementById("address2")).value;
-    this.buyer.stateOrProvince2 = (<HTMLInputElement>document.getElementById("state2")).value;
-    this.buyer.zipOrPostalCode2 = (<HTMLInputElement>document.getElementById("zip2")).value;
-    this.buyer.country2 = (<HTMLInputElement>document.getElementById("country2")).value;
-  }
 
   private addPaypalScript(): any {
     let sandbox: string = ''; //<Sandbox Client ID>
