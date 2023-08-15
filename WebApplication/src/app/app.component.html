@@ -3,14 +3,14 @@
         <h1>Welcome to our shopping cart, {{getBuyerData().firstName}}!</h1>
         <p>Review your selected items</p>
     </div>   
-    <div class="offer">
+    <div class="offer">  
         <hr class="divider"> 
         <h2>{{getProductData().name}}</h2>
         <p>Total cost ${{getProductData().price}}<p>
         <img [src]="getProductData().img" id="img1">
         <p id="item">Item number: {{getProductData().number}}<p>
         <hr class="divider">   
-    </div>         
+    </div> 
         <h3 id="personalTitle">Personal details:</h3>
         <form>
             <label for="firstName">First name: </label>
@@ -40,9 +40,8 @@
                   <input type="text" id="country" class="form" [name]="'country' + (i + 1)" required [(ngModel)]="address.country"><br>
                 </div>
             </ng-container>
-            
             <div id="paypalButton"></div>
-        </form>
+        </form> 
 </div> 
 <router-outlet></router-outlet>
    

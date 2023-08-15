@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
         zipOrPostalCode: '21061',
         country: 'US',
       },
-    ],
+    ],  
   };
 
   constructor(private http: HttpClient) { }
@@ -67,6 +67,7 @@ export class AppComponent implements OnInit {
                 return actions.order.create({
                   purchase_units: [{
                     amount: {
+                      "currency_code": "BRL",
                       value: this.product1.price 
                     },
                     payer: {
@@ -104,7 +105,7 @@ export class AppComponent implements OnInit {
             onApprove: (data: any, actions: any) => {
                 return actions.order.capture().then( (details: any) => {
                     alert("Thank you for choosing us for your shopping needs!");
-                    alert("The order ID that has been generated is" + this.orderId);
+                    alert("The order ID that has been generated is: " + this.orderId);
                 });
             }
           }).render('#paypalButton'); 
@@ -122,8 +123,6 @@ export class AppComponent implements OnInit {
   getBuyerData(): any {
     return this.buyer;
   }
-  
-
 
   private addPaypalScript(): any {
     let sandbox: string = ''; //<Sandbox Client ID>
@@ -131,7 +130,7 @@ export class AppComponent implements OnInit {
     this.paypalScript = true;
     return new Promise((resolve,reject)=>{
       let scriptTagElement = document.createElement('script');
-      scriptTagElement.src= "https://www.paypal.com/sdk/js?client-id="+sandbox;
+      scriptTagElement.src= "https://www.paypal.com/sdk/js?client-id="+sandbox+"&currency=BRL";
       scriptTagElement.onload = resolve;
       document.body.appendChild(scriptTagElement);
     });
@@ -157,5 +156,5 @@ export class AppComponent implements OnInit {
   }
 
 }  
-
+ 
 
