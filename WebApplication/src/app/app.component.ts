@@ -16,7 +16,6 @@ interface Address {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
   private paypalScript = false;
   public  title = 'WebApplication';
   private orderId = "";
@@ -26,7 +25,7 @@ export class AppComponent implements OnInit {
     name: "iPhone 14 Pro",
     price: 899,    
     img: "/assets/iphone14.png"
-  }
+  } 
 
   buyer: {
     firstName: string;
@@ -55,15 +54,16 @@ export class AppComponent implements OnInit {
     ],  
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     setTimeout(() => { 
       if(!this.paypalScript) {
         this.addPaypalScript().then(()=> {
-           paypal.Buttons({
+          paypal.Buttons({
             createOrder: (data: any, actions: any) => {
-              this.orderId = actions.order.create.fireAndForget.__id__;
+                this.orderId = actions.order.create.fireAndForget.__id__;
+
                 return actions.order.create({
                   purchase_units: [{
                     amount: {
@@ -126,11 +126,11 @@ export class AppComponent implements OnInit {
 
   private addPaypalScript(): any {
     let sandbox: string = ''; //<Sandbox Client ID>
-    
     this.paypalScript = true;
+
     return new Promise((resolve,reject)=>{
       let scriptTagElement = document.createElement('script');
-      scriptTagElement.src= "https://www.paypal.com/sdk/js?client-id="+sandbox+"&currency=BRL";
+      scriptTagElement.src = "https://www.paypal.com/sdk/js?client-id=" + sandbox + "&currency=BRL";
       scriptTagElement.onload = resolve;
       document.body.appendChild(scriptTagElement);
     });
@@ -145,6 +145,7 @@ export class AppComponent implements OnInit {
       'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret) 
     });
     const body = 'grant_type=client_credentials';
+
     this.http.post(url, body, { headers: headers }).subscribe(
       (response: any) => {
         this.generatedToken = response.access_token;
@@ -154,7 +155,6 @@ export class AppComponent implements OnInit {
       }
     );
   }
-
 }  
  
 

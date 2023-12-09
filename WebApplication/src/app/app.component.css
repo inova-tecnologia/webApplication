@@ -2,56 +2,43 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 .offer {
     padding-top: 50px;
 }
-
 #img1 {
     width: 600PX;
     height: 400PX;
 }
-
 #item {
     margin-bottom: 25px;
 }
-
 #personalTitle {
     margin-top: 70px;
 }
-
 .form {
     margin-top: 5px
 }
-
 #email {
     margin-left: 28px;
 }
-
 #phone {
     margin-right: 25px;
 }
-
 #h3 {
     margin-top: 25px;
 }
-
 #address {   
     margin-right: -15px;
 }
- 
 #state {
     margin-right: 26px;
 }
-
 #zip {
     margin-right: 34px;
 }
-
 #country {
     margin-left: 15px;
 }
-
 #paypalButton {
     margin-top: 50px;
 }
